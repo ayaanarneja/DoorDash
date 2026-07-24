@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  /* ---- Brand palette (warm food gradient: orange > red > amber, purple accent) ---- */
+  --color-primary: #ff5722;
+  --color-primary-light: #ff8a50;
+  --color-primary-dark: #d84315;
+  --color-secondary: #ffb300;
+  --color-accent-purple: #a855f7;
+  --color-success: #2ecc71;
+  --color-danger: #ff5470;
+
+  --gradient-cta: linear-gradient(135deg, #ff8a50 0%, #ff5722 55%, #e6392a 100%);
+  --gradient-warm: linear-gradient(120deg, #ff9a3c 0%, #ff5f6d 45%, #a855f7 100%);
+  --gradient-text: linear-gradient(120deg, #ffb347 0%, #ff5722 55%, #ff2d78 100%);
+
+  /* ---- Light theme (default) ---- */
+  --bg-main: #fbf7f4;
+  --bg-secondary: #f3ece6;
+  --bg-card: #ffffff;
+  --bg-app: radial-gradient(circle at 15% 0%, rgba(255, 154, 60, 0.12), transparent 45%),
+            radial-gradient(circle at 85% 10%, rgba(168, 85, 247, 0.08), transparent 40%),
+            #fbf7f4;
+
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-bg-strong: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(20, 10, 5, 0.08);
+  --glass-blur: blur(20px);
+
+  --text-main: #201a17;
+  --text-muted: #6b625d;
+  --text-light: #ffffff;
+
+  --border-color: rgba(20, 10, 5, 0.08);
+  --shadow-soft: 0 4px 20px rgba(40, 20, 10, 0.06);
+  --shadow-hover: 0 16px 40px rgba(255, 87, 34, 0.18);
+  --shadow-glass: 0 8px 32px rgba(40, 20, 10, 0.08);
+  --shadow-glow: 0 0 0 rgba(255, 87, 34, 0);
+
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  --transition-fast: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme='dark'] {
+  --bg-main: #0d0a0f;
+  --bg-secondary: #14101a;
+  --bg-card: #1a1520;
+  --bg-app: radial-gradient(ellipse 60% 50% at 20% -10%, rgba(255, 122, 53, 0.16), transparent 55%),
+            radial-gradient(ellipse 50% 40% at 90% 0%, rgba(168, 85, 247, 0.14), transparent 50%),
+            radial-gradient(ellipse 60% 50% at 50% 100%, rgba(255, 61, 104, 0.10), transparent 55%),
+            #0b0810;
+
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-bg-strong: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-blur: blur(20px);
+
+  --text-main: #f6f3f8;
+  --text-muted: #a89fae;
+
+  --border-color: rgba(255, 255, 255, 0.1);
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.35);
+  --shadow-hover: 0 20px 50px rgba(255, 87, 34, 0.28);
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --shadow-glow: 0 0 40px rgba(255, 111, 53, 0.25);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg-app);
+  background-attachment: fixed;
+  color: var(--text-main);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+input, textarea, select {
+  font-family: 'Poppins', sans-serif;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--color-primary), var(--color-secondary));
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* ================= Utilities ================= */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Glassmorphism surface, reusable across the app */
+.glass-surface {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+}
+
+.btn-primary {
+  background: var(--gradient-cta);
+  background-size: 160% 160%;
+  color: var(--text-light);
+  padding: 13px 28px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-position var(--transition-normal);
+  box-shadow: 0 8px 20px rgba(255, 87, 34, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 34px rgba(255, 87, 34, 0.45);
+  background-position: 100% 50%;
+}
+
+.btn-primary:hover::before {
+  transform: translateX(100%);
+}
+
+.btn-primary:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+  padding: 11px 26px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background: var(--gradient-cta);
+  border-color: transparent;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(255, 87, 34, 0.3);
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.text-orange {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Skeleton shimmer — pure CSS, sits behind lazy-loaded images until they paint in */
+.food-image-wrapper,
+.restaurant-image-wrapper,
+.category-img-wrapper,
+.modal-image-container,
+.cart-item-img,
+.hero-image-container .hero-image {
+  background: linear-gradient(100deg, var(--bg-secondary) 30%, var(--glass-bg-strong) 50%, var(--bg-secondary) 70%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 150% 0; }
+  100% { background-position: -50% 0; }
+}
+
+/* Fade / rise-in animation used across pages */
+.fade-in-up {
+  animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,248 @@
+/* src/components/FoodModal.css */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(8, 6, 10, 0.65);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  animation: fadeIn var(--transition-fast);
+  padding: 20px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content {
+  background: var(--glass-bg-strong);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: var(--shadow-glass), 0 30px 70px rgba(0, 0, 0, 0.35);
+  animation: slideUp var(--transition-normal);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: var(--glass-bg-strong);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: var(--text-main);
+  box-shadow: var(--shadow-soft);
+  z-index: 10;
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.modal-close:hover {
+  transform: scale(1.1) rotate(90deg);
+  color: var(--color-primary);
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-image-container {
+  position: relative;
+  height: 300px;
+  width: 100%;
+}
+
+.modal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-favorite {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(20, 15, 20, 0.4);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  box-shadow: var(--shadow-soft);
+  transition: all var(--transition-fast);
+}
+
+.modal-favorite:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--color-primary);
+}
+
+.modal-favorite.active {
+  color: var(--color-primary);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.modal-favorite .filled {
+  fill: var(--color-primary);
+}
+
+.modal-details {
+  padding: 30px;
+}
+
+.modal-header-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.modal-title {
+  font-size: 2rem;
+  margin: 10px 0 0;
+  color: var(--text-main);
+}
+
+.modal-rating {
+  background: linear-gradient(135deg, #4caf50, #2e9e42);
+  color: white;
+  padding: 7px 14px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 4px 12px rgba(46, 158, 66, 0.35);
+}
+
+.modal-rating .star-icon {
+  fill: white;
+}
+
+.modal-desc {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.modal-meta {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-label {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.meta-val {
+  font-weight: 600;
+  color: var(--text-main);
+  font-size: 1.1rem;
+}
+
+.modal-ingredients h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: var(--text-main);
+}
+
+.modal-ingredients p {
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.modal-price {
+  font-size: 2rem;
+  font-weight: 800;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.quantity-controls.lg {
+  padding: 8px 12px;
+}
+
+.quantity-controls.lg .qty-btn {
+  width: 36px;
+  height: 36px;
+  font-size: 1.2rem;
+}
+
+.quantity-controls.lg .qty-val {
+  font-size: 1.2rem;
+  min-width: 30px;
+}
+
+.mb-2 {
+  margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+  .modal-body {
+    flex-direction: row;
+  }
+
+  .modal-image-container {
+    width: 40%;
+    height: auto;
+  }
+
+  .modal-details {
+    width: 60%;
+    padding: 40px;
+  }
+}

@@ -1,0 +1,325 @@
+/* src/pages/CheckoutPage.css */
+
+.checkout-page {
+  padding-top: 120px;
+  padding-bottom: 80px;
+  min-height: calc(100vh - 300px);
+}
+
+.checkout-content {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  margin-top: 30px;
+}
+
+.checkout-form {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.form-section {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  padding: 30px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-glass);
+  border: 1px solid var(--glass-border);
+}
+
+.form-section h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+  color: var(--text-main);
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background: var(--glass-bg);
+  color: var(--text-main);
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.15);
+}
+
+.payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+  background: var(--glass-bg);
+}
+
+.payment-option:hover {
+  background: var(--glass-bg-strong);
+  transform: translateX(3px);
+}
+
+.payment-option.selected {
+  border-color: var(--color-primary);
+  background: rgba(255, 87, 34, 0.08);
+  box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.1);
+}
+
+.payment-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radio-custom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  margin-right: 15px;
+  position: relative;
+  transition: border-color var(--transition-fast);
+}
+
+.payment-option.selected .radio-custom {
+  border-color: var(--color-primary);
+}
+
+.payment-option.selected .radio-custom::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gradient-cta);
+}
+
+.place-order-btn {
+  font-size: 1.2rem;
+  padding: 16px;
+  margin-top: 10px;
+}
+
+.order-summary-wrapper {
+  flex: 1;
+  position: sticky;
+  top: 100px;
+}
+
+.order-summary-card {
+  background: var(--glass-bg-strong);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  padding: 30px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-glass);
+  border: 1px solid var(--glass-border);
+}
+
+.order-summary-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: var(--text-main);
+}
+
+.order-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.order-item-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.order-item-row .qty {
+  font-weight: 600;
+  color: var(--color-primary);
+  width: 30px;
+}
+
+.order-item-row .name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 15px;
+}
+
+.order-item-row .price {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.order-total-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-top: 20px;
+}
+
+/* Success Animation */
+.success-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.success-view h2 {
+  font-size: 2.5rem;
+  margin: 30px 0 15px;
+  color: var(--color-success);
+  font-family: 'Playfair Display', serif;
+}
+
+.redirect-text {
+  color: var(--text-muted);
+  margin-top: 20px;
+  font-style: italic;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+.success-animation {
+  margin: 0 auto;
+}
+
+.checkmark-circle {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.background {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4caf50, #2e9e42);
+  position: absolute;
+  box-shadow: 0 10px 30px rgba(46, 158, 66, 0.4);
+}
+
+.checkmark {
+  border-radius: 5px;
+}
+
+.checkmark.draw:after {
+  animation-duration: 1.2s;
+  animation-timing-function: ease;
+  animation-name: checkmark;
+  transform: scaleX(-1) rotate(135deg);
+}
+
+.checkmark:after {
+  opacity: 1;
+  height: 60px;
+  width: 30px;
+  transform-origin: left top;
+  border-right: 8px solid white;
+  border-top: 8px solid white;
+  content: '';
+  left: 25px;
+  top: 60px;
+  position: absolute;
+}
+
+@keyframes checkmark {
+  0% {
+    height: 0;
+    width: 0;
+    opacity: 1;
+  }
+  20% {
+    height: 0;
+    width: 30px;
+    opacity: 1;
+  }
+  40% {
+    height: 60px;
+    width: 30px;
+    opacity: 1;
+  }
+  100% {
+    height: 60px;
+    width: 30px;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .checkout-content {
+    flex-direction: column-reverse;
+  }
+  .order-summary-wrapper {
+    width: 100%;
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
